@@ -2,6 +2,131 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type UserRestriction {
+  """Restriction type"""
+  type: String!
+
+  """Restriction message"""
+  message: String!
+}
+
+type LevelDetail {
+  """The ID of the level"""
+  levelId: ID!
+
+  """The description of the level"""
+  description: String!
+}
+
+type User {
+  """User ID"""
+  id: Int!
+
+  """User name"""
+  name: String!
+
+  """User surname"""
+  surname: String!
+
+  """User level"""
+  level: String!
+
+  """User profile image"""
+  profileImage: String!
+
+  """User restrictions"""
+  userRestrictions: [UserRestriction!]!
+
+  """The level detail of the user"""
+  levelDetail: LevelDetail!
+}
+
+type Shipment {
+  """Shipment ID"""
+  shipmentId: Int!
+
+  """Shipment status"""
+  status: String!
+}
+
+type Payment {
+  """Transaction ID"""
+  transactionId: Int!
+
+  """Transaction status"""
+  status: String!
+}
+
+type PurchaseCost {
+  """Total cost value"""
+  total: Float!
+
+  """Currency"""
+  currency: String!
+}
+
+type PurchaseSeller {
+  """Seller ID"""
+  id: Int!
+
+  """Seller nickname"""
+  nickname: String!
+}
+
+type UserPurchase {
+  """Purchase ID"""
+  purchaseId: Int!
+
+  """Purchase title"""
+  title: String!
+
+  """Purchase cost"""
+  cost: PurchaseCost!
+
+  """Purchase amount"""
+  amount: Int!
+
+  """Purchase date"""
+  date: String!
+
+  """Purchase image URL"""
+  image: String!
+
+  """Purchase seller"""
+  seller: PurchaseSeller!
+
+  """Transaction ID"""
+  transactionId: Int!
+
+  """Shipment ID"""
+  shipmentId: Int!
+}
+
+type UserPurchases {
+  """Total number of purchases"""
+  total: Int!
+
+  """Offset value"""
+  offset: Int!
+
+  """Limit value"""
+  limit: Int!
+
+  """List of user purchases"""
+  data: [UserPurchase!]!
+}
+
 type Query {
+  """Get user information"""
+  user: User
+
+  """Get user purchases"""
+  userPurchases(userId: Int!, limit: Int! = 10, page: Int! = 1): UserPurchases
+
+  """Get shipment detail"""
+  shipment(shipmentId: Int!): Shipment
+
+  """Get payment detail"""
+  payment(transactionId: Int!): Payment
   hello: String!
 }
