@@ -84,7 +84,7 @@ type UserPurchase {
   cost: PurchaseCost!
 
   """Purchase amount"""
-  amount: Int!
+  amount: String!
 
   """Purchase date"""
   date: String!

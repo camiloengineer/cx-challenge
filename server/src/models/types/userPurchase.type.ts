@@ -16,8 +16,8 @@ export class UserPurchase {
   @Field(type => PurchaseCost, { description: 'Purchase cost' })
   cost: PurchaseCost;
 
-  @Field(type => Int, { description: 'Purchase amount' })
-  amount: number;
+  @Field(type => String, { description: 'Purchase amount' })
+  amount: string;
 
   @Field(type => String, { description: 'Purchase date' })
   date: string;

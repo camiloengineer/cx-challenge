@@ -15,7 +15,7 @@ interface IPurchaseCostResult {
     purchaseId: number;
     title: string;
     cost: IPurchaseCostResult;
-    amount: number;
+    amount: string;
     date: string;
     image: string;
     seller: IPurchaseSellerResult;

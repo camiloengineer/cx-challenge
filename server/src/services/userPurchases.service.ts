@@ -38,8 +38,6 @@ export class UserPurchasesService {
 
   async getShipment(shipmentId: number): Promise<IShipmentResult> {
     try {
-
-      
       const shipment = await this.userPurchasesProvider.getShipmentQuery(shipmentId);
       
       const response = this.mapper.mapGetShipment(shipment);

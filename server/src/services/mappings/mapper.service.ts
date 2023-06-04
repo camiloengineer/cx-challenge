@@ -39,43 +39,83 @@ export class AutoMapper {
 
   mapGetUserPurchases(purchases: IUserPurchasesDto): IUserPurchasesResult {
     const result: IUserPurchasesResult = {
-      data: purchases.data.map((purchase: IUserPurchaseDto) => ({
-        purchaseId: purchase.purchase_id,
-        title: purchase.title,
-        cost: {
-          total: purchase.cost.total,
-          currency: purchase.cost.currency,
-        },
-        amount: purchase.amount,
-        date: purchase.date,
-        image: purchase.image,
-        seller: {
-          id: purchase.seller.id,
-          nickname: purchase.seller.nickname,
-        },
-        transactionId: purchase.transaction_id,
-        shipmentId: purchase.shipment_id,
-      })),
+      data: purchases.data.map((purchase: IUserPurchaseDto) => {
+        const purchaseDate = new Date(purchase.date);
+        const formattedDate = purchaseDate.toLocaleDateString("es-ES", {
+          day: "numeric",
+          month: "long",
+        });
+
+        const amountText = purchase.amount === 1 ? "1 unidad" : `${purchase.amount} unidades`;
+  
+        return {
+          purchaseId: purchase.purchase_id,
+          title: purchase.title,
+          cost: {
+            total: purchase.cost.total,
+            currency: purchase.cost.currency,
+          },
+          amount: amountText,
+          date: `Llegó el ${formattedDate}`,
+          image: purchase.image,
+          seller: {
+            id: purchase.seller.id,
+            nickname: purchase.seller.nickname,
+          },
+          transactionId: purchase.transaction_id,
+          shipmentId: purchase.shipment_id,
+        };
+      }),
       total: purchases.total,
       offset: purchases.offset,
       limit: purchases.limit,
     };
-
+  
     return result;
   }
 
   mapGetShipment(shipment: IShipmentDto): IShipmentResult {
+    let statusTranslation = '';
+
+    switch (shipment.status) {
+      case 'delivered':
+        statusTranslation = 'entregado';
+        break;
+      case 'cancelled':
+        statusTranslation = 'cancelado';
+        break;
+      default:
+        statusTranslation = shipment.status;
+        break;
+    }
     const result: IShipmentResult = {
       shipmentId: shipment.shipment_id,
-      status: shipment.status,
+      status: statusTranslation,
     };
     return result;
   }
 
   mapGetPayment(payment: IPaymentDto): IPaymentResult {
+    let statusTranslation = '';
+
+    switch (payment.status) {
+      case 'completed':
+        statusTranslation = 'completado';
+        break;
+      case 'rejected':
+        statusTranslation = 'rechazado';
+        break;
+      case 'cancelled':
+        statusTranslation = 'cancelado';
+        break;
+      default:
+        statusTranslation = payment.status;
+        break;
+    }
+
     const result: IPaymentResult = {
       transactionId: payment.transaction_id,
-      status: payment.status,
+      status: statusTranslation,
     };
     return result;
   }

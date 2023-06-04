@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { default as MercadoLibreService } from '../../challenge/MercadolibreService';
+import { default as MercadoLibreService } from './../../challenge/MercadolibreService';
 import { IUserDto } from 'src/models/dto/user.dto';
 import { IUserRestrictionsDto } from 'src/models/dto/userRestrictions.dto';
 import { ILevelDetailDto } from 'src/models/dto/levelDetail.dto';
