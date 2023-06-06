@@ -7,7 +7,7 @@ import Input from "shared/Input/Input";
 import Select from "shared/Select/Select";
 import Textarea from "shared/Textarea/Textarea";
 import CommonLayout from "./CommonLayout";
-import { avatarImgs } from "contains/fakeData";
+import { avatarImgs } from "config/mock/fakeData";
 
 export interface AccountPageProps {
   className?: string;

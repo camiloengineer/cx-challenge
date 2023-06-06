@@ -63,3 +63,8 @@ export const avatarImgs = [
   avatar4,
   avatar5,
 ];
+
+export const userCredentials = {
+  username: "mercadolibre", 
+  password: "P@$$w0rd1234!Secure"
+}

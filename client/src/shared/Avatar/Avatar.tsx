@@ -1,7 +1,7 @@
-import { avatarColors } from "contains/contants";
+import { avatarColors } from "config/mock/contants";
 import React, { FC } from "react";
 
-import { avatarImgs } from "contains/fakeData";
+import { avatarImgs } from "config/mock/fakeData";
 import VerifyIcon from "components/VerifyIcon";
 
 export interface AvatarProps {
@@ -16,7 +16,7 @@ export interface AvatarProps {
 }
 
 const Avatar: FC<AvatarProps> = ({
-  containerClassName = "ring-1 ring-white dark:ring-neutral-900",
+  containerClassName = "ring-1 ring-black dark:ring-neutral-900",
   sizeClass = "h-6 w-6 text-sm",
   radius = "rounded-full",
   imgUrl,

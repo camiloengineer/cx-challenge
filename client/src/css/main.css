@@ -1,0 +1,10 @@
+@import 'theme-colors';
+@import 'theme-font';
+@import 'theme-custom';
+@import 'header';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+

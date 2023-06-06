@@ -128,5 +128,17 @@ type Query {
 
   """Get payment detail"""
   payment(transactionId: Int!): Payment
-  hello: String!
+}
+
+type Mutation {
+  """Login with username and password"""
+  token(input: UserLogin!): String
+}
+
+input UserLogin {
+  """Username"""
+  username: String!
+
+  """Password"""
+  password: String!
 }

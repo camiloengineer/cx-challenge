@@ -1,6 +1,3 @@
-// Change your color you want --- please input rgb color (ex: 22,33,44)
-
-// THEME PALETTE 9 ==========================================
 :root {
   --c-primary-50: 240, 249, 255;
   --c-primary-100: 224, 242, 254;
@@ -12,7 +9,7 @@
   --c-primary-700: 3, 105, 161;
   --c-primary-800: 7, 89, 133;
   --c-primary-900: 12, 74, 110;
-  // SECONDARY COLOR
+
   --c-secondary-50: 240, 253, 244;
   --c-secondary-100: 220, 252, 231;
   --c-secondary-200: 187, 247, 208;
@@ -24,7 +21,6 @@
   --c-secondary-800: 22, 101, 52;
   --c-secondary-900: 20, 83, 45;
 
-  // NEUTRAL COLOR
   --c-neutral-50: 249, 250, 251;
   --c-neutral-100: 243, 244, 246;
   --c-neutral-200: 229, 231, 235;

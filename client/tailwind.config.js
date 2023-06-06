@@ -75,6 +75,8 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require("postcss-import"),
+    require('postcss-nesting'),
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
     require("@tailwindcss/line-clamp"),

@@ -1,3 +1,4 @@
+
 .root {
   overflow: hidden;
 }
@@ -6,51 +7,41 @@
   z-index: 999999;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .hiddenScrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .hiddenScrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.customScrollBar {
-  /* width */
-  &::-webkit-scrollbar {
-    height: 5px;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #888;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+.customScrollBar::-webkit-scrollbar {
+  height: 5px;
 }
 
-//
+.customScrollBar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.customScrollBar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #888;
+}
+
+.customScrollBar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 .nc-will-change-top {
   will-change: top;
 }
-//
 
 .nc-SectionClientSay .glide__bullet--active {
   @apply bg-neutral-700;
 }
+
 .nc-GallerySlider .glide__bullet--active {
   @apply bg-white w-2 h-2;
 }
@@ -59,54 +50,45 @@
   @apply block;
 }
 
-//
 .nc-card-title {
-  @apply transition-colors  hover:text-primary-900 dark:hover:text-primary-300 duration-75;
+  @apply transition-colors hover:text-primary-900 dark:hover:text-primary-300 duration-75;
 }
 
-//
-.menuIsNew_lv1 {
-  > a::before {
-    content: "Nuevo!";
-    position: absolute;
-    top: -2px;
-    right: 0;
-    display: inline-block;
-    padding: 0 5px;
-    line-height: 15px;
-    border-radius: 4px;
-    background-color: #f35656;
-    color: #fff;
-    font-size: 10px;
-    font-weight: normal;
-  }
-}
-.menuIsNew {
-  > a::after {
-    content: "Nuevo!";
-    display: inline-block;
-    padding: 0 5px;
-    line-height: 15px;
-    border-radius: 4px;
-    background-color: #f35656;
-    color: #fff;
-    font-size: 10px;
-    margin-left: 6px;
-  }
+.menuIsNew_lv1 > a::before {
+  content: "New!";
+  position: absolute;
+  top: -2px;
+  right: 0;
+  display: inline-block;
+  padding: 0 5px;
+  line-height: 15px;
+  border-radius: 4px;
+  background-color: #f35656;
+  color: #fff;
+  font-size: 10px;
+  font-weight: normal;
 }
 
-//
-.nc-PostCardCommentBtn,
-.nc-PostCardLikeAction,
-.nc-CommentCardLikeReply > button {
-  &:hover {
-    span {
-      color: inherit;
-    }
+.menuIsNew > a::after {
+  content: "New!";
+  display: inline-block;
+  padding: 0 5px;
+  line-height: 15px;
+  border-radius: 4px;
+  background-color: #f35656;
+  color: #fff;
+  font-size: 10px;
+  margin-left: 6px;
+}
+
+.nc-PostCardCommentBtn:hover,
+.nc-PostCardLikeAction:hover,
+.nc-CommentCardLikeReply > button:hover {
+  span {
+    color: inherit;
   }
 }
 
-//
 .nc-box-has-hover {
   @apply bg-white rounded-3xl border border-neutral-200/70 hover:bg-neutral-50 hover:shadow-xl hover:border-transparent transition-shadow;
 }
@@ -119,18 +101,18 @@
   @apply dark:bg-neutral-900 dark:border dark:border-neutral-700 dark:shadow-2xl;
 }
 
-//
 .nc-origin-100 {
   transform-origin: 100% 50% 0px;
 }
+
 .nc-origin-50 {
   transform-origin: 50% 50% 0px;
 }
 
-// HERO
 .nc-hero-field-padding {
   @apply py-3 px-4 md:py-4 md:px-6 xl:py-6 xl:px-8;
 }
+
 .nc-hero-field-focused {
   @apply shadow-2xl rounded-full dark:bg-white/5;
 }
@@ -138,22 +120,19 @@
 .nc-icon-field {
   @apply w-5 h-5 lg:w-7 lg:h-7;
 }
-//
+
 button.gm-control-active.gm-fullscreen-control {
-  @apply rounded-xl #{!important};
+  @apply rounded-xl !important;
 }
 
-//
-.nc-FiveStartIconForRate {
-  svg:hover ~ svg {
-    @apply text-neutral-300;
-  }
+.nc-FiveStartIconForRate svg:hover ~ svg {
+  @apply text-neutral-300;
 }
-/* 
- */
+
 .nc-shadow-lg {
   box-shadow: 2px 8px 40px rgba(0, 0, 0, 0.08);
 }
+
 .hover\:nc-shadow-lg:hover {
   box-shadow: 2px 8px 40px rgba(0, 0, 0, 0.08);
 }
@@ -161,6 +140,7 @@ button.gm-control-active.gm-fullscreen-control {
 .nc-shadow-sketch {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
+
 .hover\:nc-shadow-sketch:hover {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
@@ -203,7 +183,6 @@ button.gm-control-active.gm-fullscreen-control {
   }
 }
 
-// LISTING PAGE DETAIL
 .listingSection__wrap--old {
   @apply w-full flex flex-col sm:rounded-2xl border-b sm:border-t sm:border-l sm:border-r border-neutral-200 dark:border-neutral-700 space-y-6 sm:space-y-8 pb-10 px-0 sm:p-4 xl:p-8;
 }
@@ -216,7 +195,6 @@ button.gm-control-active.gm-fullscreen-control {
   @apply w-full flex flex-col border-b border-neutral-200 dark:border-neutral-700 space-y-6 sm:space-y-8 pb-14;
 }
 
-//
 input[type="time"]::-webkit-calendar-picker-indicator {
   @apply dark:bg-neutral-500 rounded-md;
 }
@@ -225,7 +203,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   -webkit-appearance: none !important;
 }
 
-//
 .nc-product-notify-animation {
   animation-name: ncSlideLeft;
   animation-duration: 300ms;
@@ -290,6 +267,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     opacity: 1;
   }
 }
+
 @keyframes SectionHero2ItemDot {
   from {
     width: 30px;
@@ -301,7 +279,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   }
 }
 
-/* == */
 .nc-SectionHero2Item--animation {
   .nc-SectionHero2Item__dot {
     animation-name: SectionHero2ItemDot;
@@ -326,11 +303,13 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     animation-duration: 800ms;
     animation-timing-function: ease-in-out;
   }
+
   .nc-SectionHero2Item__heading {
     animation-name: CardLarge1ExampleLeft;
     animation-duration: 600ms;
     animation-timing-function: ease-in-out;
   }
+
   .nc-SectionHero2Item__subheading {
     animation-name: CardLarge1ExampleLeft;
     animation-timing-function: ease-in-out;

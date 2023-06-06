@@ -4,4 +4,5 @@ export interface IUserDto {
     surname: string;
     level: string;
     profile_image: string;
+    password: string;
 }

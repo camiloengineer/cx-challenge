@@ -3,14 +3,12 @@ import MyRouter from "routers/index";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 function App() {
+
   return (
     <HelmetProvider>
       <Helmet>
         <title>Mercado Libre Chile</title>
-        <meta
-          name="description"
-          content="Mercado Libre"
-        />
+        <meta name="description" content="Mercado Libre" />
       </Helmet>
 
       {/* MAIN APP */}
@@ -22,3 +20,4 @@ function App() {
 }
 
 export default App;
+

@@ -1,18 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-//
-import "./styles/index.scss";
-import "./index.css";
-import "./fonts/line-awesome-1.3.0/css/line-awesome.css";
-
-//
+import { Provider } from 'react-redux';
+import { toolkitStore } from './store';
+import '../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss';
+import "./css/bundle.css";
+import './css/vendors/glide.scss';
 import App from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={toolkitStore}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );

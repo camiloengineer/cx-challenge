@@ -8,7 +8,7 @@ import Page404 from "containers/Page404/Page404";
 import AccountPage from "containers/AccountPage/AccountPage";
 import AccountOrder from "containers/AccountPage/AccountOrder";
 import PurchaseDetailPage from "containers/PurchaseDetail/PurchaseDetailPage";
-import HeaderLogged from "components/Header/HeaderLogged";
+import Header from "components/Header/Header";
 
 export const pages: Page[] = [
   { path: "/", component: PageHome },
@@ -19,10 +19,11 @@ export const pages: Page[] = [
 ];
 
 const MyRoutes = () => {
+
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <HeaderLogged />
+      <Header />
       <Routes>
         {pages.map(({ component: Component, path }, index) => {
           return <Route key={index} element={<Component />} path={path} />;

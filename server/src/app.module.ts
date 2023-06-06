@@ -1,22 +1,25 @@
+
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
+import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
 
-import { AppController } from './app.controller';
+import { SECRET_KEY } from './config/config';
 import { ResolverModule } from './resolvers/resolver.module';
-import { AppService } from './app.service';
-import { AppResolver } from './app.resolver';
 
 @Module({
   imports: [
+    PassportModule,
+    JwtModule.register({
+      secret: SECRET_KEY,
+      signOptions: { expiresIn: '30d' }, 
+    }),
     ResolverModule,
-    AppResolver,
     GraphQLModule.forRoot({
       driver: ApolloDriver, 
       autoSchemaFile: 'schema.gql',
     })
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

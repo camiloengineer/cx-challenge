@@ -4,8 +4,10 @@
   }
 }
 
-.menu-item.menu-megamenu:hover {
-  > .sub-menu {
-    @apply visible;
+.menu-item {
+  &.menu-megamenu:hover {
+    > .sub-menu {
+      @apply visible;
+    }
   }
 }

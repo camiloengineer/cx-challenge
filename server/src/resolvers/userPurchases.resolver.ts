@@ -1,14 +1,18 @@
 import { Args, Int, Query, Resolver } from '@nestjs/graphql';
+import { UseGuards } from '@nestjs/common';
+
 import { Shipment } from 'src/models/types/Shipment.type';
 import { Payment } from 'src/models/types/payment.type';
 import { UserPurchases } from 'src/models/types/userPurchases.type';
 import { UserPurchasesService } from 'src/services/userPurchases.service';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @Resolver()
 export class UserPurchasesResolver {
   constructor(private readonly userPurchasesService: UserPurchasesService) {}
 
-  @Query(returns => UserPurchases, { description: 'Get user purchases', nullable: true })
+  @Query(_ => UserPurchases, { description: 'Get user purchases', nullable: true })
+  @UseGuards(new AuthGuard())
   async userPurchases(
     @Args('userId', { type: () => Int }) userId: number,
     @Args('limit', { type: () => Int, defaultValue: 10 }) limit: number,
@@ -24,7 +28,8 @@ export class UserPurchasesResolver {
     }
   }
 
-  @Query(returns => Shipment, { description: 'Get shipment detail', nullable: true })
+  @Query( _ => Shipment, { description: 'Get shipment detail', nullable: true })
+  @UseGuards(new AuthGuard())
   async shipment(
     @Args('shipmentId', { type: () => Int }) shipmentId: number,
   ) {
@@ -38,7 +43,8 @@ export class UserPurchasesResolver {
     }
   }
 
-  @Query(returns => Payment, { description: 'Get payment detail', nullable: true })
+  @Query(_ => Payment, { description: 'Get payment detail', nullable: true })
+  @UseGuards(new AuthGuard())
   async payment(
     @Args('transactionId', { type: () => Int }) transactionId: number,
   ) {

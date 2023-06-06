@@ -27,11 +27,26 @@ export class AutoMapper {
       surname: user.surname,
       level: user.level,
       profileImage: user.profile_image,
+      password: user.password,
       userRestrictions,
       levelDetail: {
         levelId: levelDetail.level_id,
         description: levelDetail.description,
       },
+    };
+
+    return result;
+  }
+
+  mapGetUserLogin(
+    user: IUserDto
+  ) {
+    let result: IUserResult = {
+      id: user.user_id,
+      name: user.name,
+      surname: user.surname,
+      level: user.level.toLowerCase(),
+      password: user.password,
     };
 
     return result;

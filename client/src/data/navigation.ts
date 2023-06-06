@@ -1,5 +1,5 @@
 import { NavItemType } from "shared/Navigation/NavigationItem";
-import ncNanoId from "utils/ncNanoId";
+import ncNanoId from "utils/nanoid.utils";
 
 const currentPath = "/";
 

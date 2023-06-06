@@ -1,12 +1,18 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Popover, Transition } from "@headlessui/react";
+import { useSelector } from "react-redux";
+import { RootState } from "store";
 
 import Avatar from "shared/Avatar/Avatar";
 import SwitchDarkMode2 from "shared/SwitchDarkMode/SwitchDarkMode2";
-import { avatarImgs } from "contains/fakeData";
 
-export default function AvatarDropdown() {
+type OnCloseFunction = () => void;
+
+export default function AvatarDropdown({ onClose }: { onClose: OnCloseFunction }) {
+
+  const user = useSelector((state: RootState) => state.user);
+
   return (
     <div className="AvatarDropdown ">
       <Popover className="relative">
@@ -15,27 +21,7 @@ export default function AvatarDropdown() {
             <Popover.Button
               className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none flex items-center justify-center`}
             >
-              <svg
-                className=" w-6 h-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            <Avatar imgUrl={user.profileImage} hasChecked={user.userRestrictions.length > 0 ? false : true} userName={`${user.name} ${user.surname}`} sizeClass="w-8 h-8" />
             </Popover.Button>
             <Transition
               as={Fragment}
@@ -50,14 +36,14 @@ export default function AvatarDropdown() {
                 <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid grid-cols-1 gap-6 bg-white dark:bg-neutral-800 py-7 px-6">
                     <div className="flex items-center space-x-3">
-                      <Avatar imgUrl={avatarImgs[4]} sizeClass="w-12 h-12" />
+                      <Avatar imgUrl={user.profileImage} hasChecked={user.userRestrictions.length > 0 ? false : true} userName={`${user.name} ${user.surname}`} sizeClass="w-12 h-12" />
 
                       <div className="flex-grow">
-                        <h4 className="font-semibold">Camilo González</h4>
-                        <p className="text-xs mt-0.5">Nivel Oro</p>
+                        <h4 className="font-semibold">{user.name} {user.surname}</h4>
+                        <p className="text-xs mt-0.5 capitalize">Nivel {user.level.toLowerCase()}</p>
                       </div>
                     </div>
-                    <p className="text-xs"> Tu cuenta no ha sido verificada aún. Revisa tu mail</p>
+                    <p className="text-xs">{user.userRestrictions[0]?.message}</p>
                     <div className="w-full border-b border-neutral-200 dark:border-neutral-700" />
 
                     {/* ------------------ 1 --------------------- */}
@@ -195,7 +181,7 @@ export default function AvatarDropdown() {
                     <Link
                       to={"/"}
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                      onClick={() => close()}
+                      onClick={() => onClose()}
                     >
                       <div className="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
                         <svg

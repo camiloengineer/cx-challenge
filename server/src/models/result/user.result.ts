@@ -6,7 +6,8 @@ export interface IUserResult {
     name: string;
     surname: string;
     level: string;
-    profileImage: string;
-    userRestrictions: IUserRestrictionsResult;
-    levelDetail: ILevelDetailResult;
+    password: string;
+    profileImage?: string;
+    userRestrictions?: IUserRestrictionsResult;
+    levelDetail?: ILevelDetailResult;
 }
