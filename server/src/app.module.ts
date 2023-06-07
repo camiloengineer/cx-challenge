@@ -13,7 +13,7 @@ import { ResolverModule } from './resolvers/resolver.module';
     PassportModule,
     JwtModule.register({
       secret: SECRET_KEY,
-      signOptions: { expiresIn: '30d' }, 
+      signOptions: { expiresIn: '10h' }, 
     }),
     ResolverModule,
     GraphQLModule.forRoot({

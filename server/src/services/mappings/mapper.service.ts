@@ -16,12 +16,34 @@ import { IUserPurchasesResult } from 'src/models/result/userPurchases.result';
 
 @Injectable()
 export class AutoMapper {
+  private mapStatusTranslation(
+    status: string,
+    context: 'shipping' | 'payment',
+  ): string {
+    switch (status) {
+      case 'completed':
+        return context === 'shipping' ? 'entregado' : 'aprobado';
+      case 'rejected':
+        return 'rechazado';
+      case 'cancelled':
+        return 'cancelado';
+      case 'delivered':
+        return 'entregado';
+      default:
+        return status;
+    }
+  }
+
+  private mapDescription(description: string | undefined): string {
+    return description?.split('-')[0]?.trim() || '';
+  }
+
   mapGetUser(
     user: IUserDto,
     userRestrictions: IUserRestrictionsDto,
     levelDetail: ILevelDetailDto,
-  ) {
-    let result: IUserResult = {
+  ): IUserResult {
+    const result: IUserResult = {
       id: user.user_id,
       name: user.name,
       surname: user.surname,
@@ -31,17 +53,15 @@ export class AutoMapper {
       userRestrictions,
       levelDetail: {
         levelId: levelDetail.level_id,
-        description: levelDetail.description,
+        description: this.mapDescription(levelDetail.description),
       },
     };
 
     return result;
   }
 
-  mapGetUserLogin(
-    user: IUserDto
-  ) {
-    let result: IUserResult = {
+  mapGetUserLogin(user: IUserDto): IUserResult {
+    const result: IUserResult = {
       id: user.user_id,
       name: user.name,
       surname: user.surname,
@@ -56,13 +76,14 @@ export class AutoMapper {
     const result: IUserPurchasesResult = {
       data: purchases.data.map((purchase: IUserPurchaseDto) => {
         const purchaseDate = new Date(purchase.date);
-        const formattedDate = purchaseDate.toLocaleDateString("es-ES", {
-          day: "numeric",
-          month: "long",
+        const formattedDate = purchaseDate.toLocaleDateString('es-ES', {
+          day: 'numeric',
+          month: 'long',
         });
 
-        const amountText = purchase.amount === 1 ? "1 unidad" : `${purchase.amount} unidades`;
-  
+        const amountText =
+          purchase.amount === 1 ? '1 unidad' : `${purchase.amount} unidades`;
+
         return {
           purchaseId: purchase.purchase_id,
           title: purchase.title,
@@ -85,24 +106,15 @@ export class AutoMapper {
       offset: purchases.offset,
       limit: purchases.limit,
     };
-  
+
     return result;
   }
 
   mapGetShipment(shipment: IShipmentDto): IShipmentResult {
-    let statusTranslation = '';
-
-    switch (shipment.status) {
-      case 'delivered':
-        statusTranslation = 'entregado';
-        break;
-      case 'cancelled':
-        statusTranslation = 'cancelado';
-        break;
-      default:
-        statusTranslation = shipment.status;
-        break;
-    }
+    const statusTranslation = this.mapStatusTranslation(
+      shipment.status,
+      'shipping',
+    );
     const result: IShipmentResult = {
       shipmentId: shipment.shipment_id,
       status: statusTranslation,
@@ -111,23 +123,10 @@ export class AutoMapper {
   }
 
   mapGetPayment(payment: IPaymentDto): IPaymentResult {
-    let statusTranslation = '';
-
-    switch (payment.status) {
-      case 'completed':
-        statusTranslation = 'completado';
-        break;
-      case 'rejected':
-        statusTranslation = 'rechazado';
-        break;
-      case 'cancelled':
-        statusTranslation = 'cancelado';
-        break;
-      default:
-        statusTranslation = payment.status;
-        break;
-    }
-
+    const statusTranslation = this.mapStatusTranslation(
+      payment.status,
+      'payment',
+    );
     const result: IPaymentResult = {
       transactionId: payment.transaction_id,
       status: statusTranslation,

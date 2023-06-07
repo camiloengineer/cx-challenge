@@ -1,5 +1,5 @@
 import React from "react";
-import MyRouter from "routers/index";
+import MyRouter from "presentation/routers/index";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Mercado Libre Chile</title>
+        <title>Mercado Libre Argentina</title>
         <meta name="description" content="Mercado Libre" />
       </Helmet>
 
