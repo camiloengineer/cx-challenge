@@ -28,28 +28,28 @@ _El backend está hecho en NestJS con Typescript, utiliza JSON Web Tokens para l
 
 ```
 cd server
-npm install
-npm run start:dev
+yarn install
+yarn start:dev
 ```
 
 **Frontend**
 
 ```
 cd client
-npm install
-npm run start
+yarn install
+yarn run start
 ```
 
 ### Pruebas unitarias 🧪
 
 ```
-npm test
+yarn test
 ```
 
 ### Storybook 📕
 
 ```
-npm run storybook
+yarn storybook
 ```
 
 ## Autores ✒️
