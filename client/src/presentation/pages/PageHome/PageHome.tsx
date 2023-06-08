@@ -31,6 +31,7 @@ const PageHome: FC<PageHomeProps> = ({ onAuthToggle }) => {
     return () => {
       clearTimeout(timer);
     };
+  // eslint-disable-next-line
   }, [])
 
   return (

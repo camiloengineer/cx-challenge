@@ -7,7 +7,7 @@ _Este es un proyecto full-stack que consiste en replicar un sitio de compras, es
 _El repositorio de este proyecto se encuentra alojado en GitHub. Puedes clonarlo en tu máquina local para propósitos de desarrollo y pruebas._
 
 ```
-$ git clone https://github.com/camiloengineer/cx-challenge.git
+git clone https://github.com/camiloengineer/cx-challenge.git
 ```
 
 ### Pre-requisitos 📋
@@ -43,7 +43,7 @@ _Ahora que el backend está funcionando, puedes iniciar el frontend._
 ```
 cd client
 yarn install
-yarn run start
+yarn run start:dev
 ```
 
 ## Pruebas unitarias 🧪
@@ -52,7 +52,7 @@ _Puedes ejecutar las pruebas unitarias del proyecto, las cuales están en el dir
 
 ```
 cd client
-yarn test
+yarn test --watchAll
 ```
 
 ## Storybook 📕

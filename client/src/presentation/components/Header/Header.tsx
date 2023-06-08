@@ -39,6 +39,7 @@ const Header: FC<HeaderProps> = ({ onAuthToggle, showLogin }) => {
     return () => {
       clearTimeout(timer);
     };
+  // eslint-disable-next-line
   }, [dispatch]);
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const Header: FC<HeaderProps> = ({ onAuthToggle, showLogin }) => {
     return () => {
       clearTimeout(timer);
     };
+  // eslint-disable-next-line
   }, [showLogin])
   
 

@@ -31,7 +31,14 @@ const AccountOrder: FC<AccountOrderProps> = () => {
   const { expireSession } = authManager();
 
   const handlePaginationChange = async (selectedPage: number) => {
+    setLoading(true);
     setPage(selectedPage);
+    const action = await dispatch(fetchUserPurchases({ userId, limit, page }));
+    dispatch(clearSelectedPurchase());
+    setLoading(false);
+    if (!action.payload) {
+      await logout();
+    }
   };
 
   const userPurchases = useSelector((state: RootState) => state.userPurchases);
@@ -40,26 +47,24 @@ const AccountOrder: FC<AccountOrderProps> = () => {
     await expireSession();
     navigate("/");
   };
-
-  const fetchData = async () => {
-    setLoading(true);
-    const action = await dispatch(fetchUserPurchases({ userId, limit, page }));
-    dispatch(clearSelectedPurchase());
-    setLoading(false);
-    if (!action.payload) {
-      await logout();
-    }
-    isMounted.current = true;
-  };
   
   useEffect(() => {
-    fetchData();
+    const fetchData = async () => {
+      setLoading(true);
+      const action = await dispatch(fetchUserPurchases({ userId, limit, page }));
+      dispatch(clearSelectedPurchase());
+      setLoading(false);
+      if (!action.payload) {
+        await logout();
+      }
+    };
 
     const timer = setTimeout(() => {
       if (!isMounted.current) {
         fetchData();
+        isMounted.current = true;
       }
-    }, 5000);
+    });
 
     return () => {
       clearTimeout(timer);
