@@ -4,7 +4,7 @@ import { UserModelResponse } from "./model/user.model";
 import { request } from "../../../infrastructure/utils/api.utils";
 import { authManager } from "infrastructure/utils/auth.utils";
 
-const { getAuthToken } = authManager();
+const auth = authManager();
 
 const GET_USER_QUERY = gql`
   query {
@@ -37,7 +37,7 @@ const LOGIN_MUTATION = gql`
 
 export async function getUser(token?: string): Promise<UserModelResponse> {
   try {
-    const authToken = token ?? await getAuthToken();
+    const authToken = token ?? await auth.getAuthToken(); // Acceder al método getAuthToken desde el objeto auth
     const response: any = await request(GET_USER_QUERY, undefined, false, authToken);
     const userData = response.user;
 

@@ -1,21 +1,23 @@
 const serverApiUrlLocal = process.env.REACT_APP_SERVER_API_URL_LOCAL ?? 'http://localhost:3000';
 const frontendUrlLocal = process.env.REACT_APP_FRONTEND_URL_LOCAL ?? 'http://localhost:4200';
-// serverApiUrl Prod, QA, Dev
 
 const urlEnviroment = {
-    serverApiUrlLocal,
-}
+  serverApiUrlLocal,
+};
 
-const getDomain = () : string => {
-	let localhost = false;
+const getDomain = (): string => {
+  const localhost = window.location?.origin?.indexOf(frontendUrlLocal) >= 0;
+  const defaultUrl = 'http://localhost:3000';
 
-    localhost = window.location.origin.indexOf(frontendUrlLocal) >= 0;
+  let domain = '';
+  if (localhost) {
+    domain = urlEnviroment.serverApiUrlLocal;
+  } else if (!localhost && process.env.NODE_ENV === 'test') {
+    domain = defaultUrl;
+  }
 
-    let domain = '';
-    if (localhost) domain = urlEnviroment.serverApiUrlLocal;
-
-	return domain;
-}
+  return domain;
+};
 
 const URL_SERVER = getDomain();
 
