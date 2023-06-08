@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "ea66c18c-d3bd-4811-9fb2-11facd58a014",
+		"name": "cx-challenge API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik1lcmNhZG9saWJyZSIsInN1cm5hbWUiOiJVc2VyIiwibGV2ZWwiOiJvcm8iLCJpYXQiOjE2ODYxMDI2MTAsImV4cCI6MTY4NjEwNjIxMH0.u-4Iyq6k2Vgxp_1g-XW3sp21-lpI6NF4h8FPE9Mep_c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  user {\n    id\n    name\n    surname\n    level\n    profileImage\n    userRestrictions {\n      type\n      message\n    }\n    levelDetail {\n      levelId\n      description\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userPurchases",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik1lcmNhZG9saWJyZSIsInN1cm5hbWUiOiJVc2VyIiwibGV2ZWwiOiJvcm8iLCJpYXQiOjE2ODYxMDI2MTAsImV4cCI6MTY4NjEwNjIxMH0.u-4Iyq6k2Vgxp_1g-XW3sp21-lpI6NF4h8FPE9Mep_c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUserPurchases($userId: Int!, $limit: Int!, $page: Int!) {\n  userPurchases(userId: $userId, limit: $limit, page: $page) {\n    total\n    offset\n    limit\n    data {\n      purchaseId\n      title\n      cost {\n        total\n        currency\n      }\n      amount\n      date\n      image\n      seller {\n        id\n        nickname\n      }\n      transactionId\n      shipmentId\n    }\n  }\n}",
+						"variables": "{\n  \"userId\": 1,\n  \"limit\": 7,\n  \"page\": 1\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "shipment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik1lcmNhZG9saWJyZSIsInN1cm5hbWUiOiJVc2VyIiwibGV2ZWwiOiJvcm8iLCJpYXQiOjE2ODYxMDI2MTAsImV4cCI6MTY4NjEwNjIxMH0.u-4Iyq6k2Vgxp_1g-XW3sp21-lpI6NF4h8FPE9Mep_c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetShipment($shipmentId: Int!) {\n  shipment(shipmentId: $shipmentId) {\n    shipmentId\n    status\n  }\n}",
+						"variables": "{\n  \"shipmentId\": 1000010191\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query ($transactionId: Int!) {\n  payment(transactionId: $transactionId) {\n    transactionId\n    status\n  }\n}",
+						"variables": "{\n  \"transactionId\": 7010191\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Login($username: String!, $password: String!) {\n  token(input: {\n    username: $username,\n    password: $password\n  })\n}",
+						"variables": "{\n  \"username\": \"mercadolibre\",\n  \"password\": \"P@$$w0rd1234!Secure\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

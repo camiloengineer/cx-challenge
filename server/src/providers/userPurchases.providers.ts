@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { default as MercadoLibreService } from '../../challenge/MercadolibreService';
+import { default as MercadoLibreService } from '../../cx-frontend-challenge/MercadolibreService';
 import { IUserPurchasesDto } from 'src/models/dto/userPurchases.dto';
 import { IShipmentDto } from 'src/models/dto/shipment.dto';
 import { IPaymentDto } from 'src/models/dto/payment.dto';

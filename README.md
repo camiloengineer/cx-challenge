@@ -12,19 +12,23 @@ $ git clone https://github.com/camiloengineer/cx-challenge.git
 
 ### Pre-requisitos 📋
 
-_Para ejecutar este proyecto en tu máquina local, necesitas tener instalado [Git](https://git-scm.com/), [Nodejs](https://nodejs.org/es/download/)_
+_Para ejecutar este proyecto en tu máquina local, necesitas tener instalado [Git](https://git-scm.com/) y [Nodejs](https://nodejs.org/es/download/)_
 
 ### Frontend 🖥️
 
-_El frontend está construido en Typescript con React, utiliza Tailwind y PostCSS. Incorpora Storybook para desarrollar componentes de UI de forma aislada, Redux para el manejo del estado, y un cliente Apollo para consumir APIs GraphQL. También cuenta con pruebas unitarias y una arquitectura hexagonal para separar las responsabilidades del código._
+_El frontend está construido en Typescript con React, y utiliza Tailwind y PostCSS. El proyecto utiliza la técnica de "Lazy Loading" para una optimización de carga más eficiente. Incorpora Storybook para desarrollar componentes de UI de forma aislada, Redux para el manejo del estado, y un cliente Apollo para consumir APIs GraphQL. También cuenta con pruebas unitarias y una arquitectura hexagonal para separar las responsabilidades del código._
 
 ### Backend 🖥️
 
 _El backend está hecho en NestJS con Typescript, utiliza JSON Web Tokens para la autenticación, GraphQL para las consultas de datos, Prettier y ESLint para el formateo del código, y guards para proteger los endpoints._
 
-### Instalación y ejecución 🔧
+## Instalación y ejecución 🔧
 
-**Backend**
+_Sigue estos pasos para instalar y ejecutar el proyecto correctamente:_
+
+**Paso 1: Backend**
+
+_Levanta primero el servidor para asegurar que el front pueda consumir los datos correctamente._
 
 ```
 cd server
@@ -32,7 +36,9 @@ yarn install
 yarn start:dev
 ```
 
-**Frontend**
+**Paso 2: Frontend**
+
+_Ahora que el backend está funcionando, puedes iniciar el frontend._
 
 ```
 cd client
@@ -40,21 +46,42 @@ yarn install
 yarn run start
 ```
 
-### Pruebas unitarias 🧪
+## Pruebas unitarias 🧪
+
+_Puedes ejecutar las pruebas unitarias del proyecto, las cuales están en el directorio `client`, de la siguiente manera:_
 
 ```
+cd client
 yarn test
 ```
 
-### Storybook 📕
+## Storybook 📕
+
+_Puedes ejecutar Storybook, el cual está en el directorio `client`, de la siguiente manera:_
 
 ```
+cd client
 yarn storybook
 ```
 
-## Autores ✒️
+## Directorio del Challenge
 
-* **Camilo González** - [Linkedin](https://www.linkedin.com/in/camiloengineer/)
+_La data del challenge está ubicada en el directorio `server/cx-frontend-challenge`._
+
+## Uso de Postman
+
+_Se ha incluido una colección Postman para facilitar las pruebas de los endpoints del API. Puedes encontrarlo en `server/postman_collection.json`._
+
+## Autor ✒️
+
+* **Camilo González** 
+    * [Linkedin](https://www.linkedin.com/in/camiloengineer/)
+    * [Website](https://www.camiloengineer.com/)
+    * [Email](mailto:camilo@camiloengineer.com)
+
+## Curriculum
+
+_Mi currículum está incluido en la raíz del repositorio para cualquier referencia._
 
 ## Expresiones de Gratitud 🎁
 
