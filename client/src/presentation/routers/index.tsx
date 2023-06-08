@@ -19,7 +19,9 @@ export const pages: Page[] = [
   },
   {
     path: "/mis-compras",
-    component: lazy(() => import("presentation/pages/AccountPage/AccountOrder")),
+    component: lazy(
+      () => import("presentation/pages/AccountPage/AccountOrder")
+    ),
     isPrivate: true,
   },
   {
@@ -36,7 +38,7 @@ export const pages: Page[] = [
   },
 ];
 
-interface PrivateRouteProps <T = {}> {
+interface PrivateRouteProps<T = {}> {
   element: React.ComponentType<T>;
   isPrivate: boolean;
   onAuthToggle: () => Promise<boolean>;
@@ -70,9 +72,15 @@ const PrivateRoute: React.FC<PrivateRouteProps<any>> = ({
   const [showError, setShowError] = useState(false);
 
   useEffect(() => {
-    if (isReady) {
-      setShowError(isPrivate && !authenticated);
-    }
+    const timer = setTimeout(async () => {
+      if (isReady) {
+        setShowError(isPrivate && !authenticated);
+      }
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [isReady, isPrivate, authenticated]);
 
   if (!isReady) {
@@ -95,7 +103,7 @@ const MyRoutes = () => {
       await loginAuth();
     } else {
       await logoutAuth();
-    } 
+    }
     setShowLogin(!showLogin);
     return showLogin;
   };
@@ -106,9 +114,9 @@ const MyRoutes = () => {
       setShowLogin(!isAuthenticated);
     };
 
-    checkAuthentication(); 
+    checkAuthentication();
   }, [isAuth]);
-  
+
   return (
     <BrowserRouter>
       <ScrollToTop />

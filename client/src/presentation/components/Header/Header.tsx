@@ -24,7 +24,7 @@ const Header: FC<HeaderProps> = ({ onAuthToggle, showLogin }) => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const inputRef = useRef<HTMLInputElement>(null);
   const [showSearchForm, setShowSearchForm] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const isMounted = useRef(false);
   const navigate = useNavigate();
   const { isAuth, getAuthToken } = authManager();
@@ -57,7 +57,6 @@ const Header: FC<HeaderProps> = ({ onAuthToggle, showLogin }) => {
 
   const handleAuthToggle = async () => {
     const isAuthenticated = await getAuthToken();
-
       if (isAuthenticated){
         const toggle = await onAuthToggle();
         if (toggle) {
@@ -156,7 +155,7 @@ const Header: FC<HeaderProps> = ({ onAuthToggle, showLogin }) => {
           <span className="hidden lg:flex">
             <SwitchDarkMode />
           </span>
-          {!showLogin ? (
+          {!showLogin && !loading ? (
             <>
               <AvatarDropdown onClose={handleAuthToggle} />
               <CartDropdown />
