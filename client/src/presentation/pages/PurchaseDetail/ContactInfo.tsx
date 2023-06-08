@@ -1,8 +1,11 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
+interface ContactInfoProps {
+  sellerName?: string;
+}
 
-const ContactInfo: FC = () => {
+const ContactInfo: FC<ContactInfoProps> = ({ sellerName = "CELECTROMIAMI123" }) => {
   const renderAccount = () => {
     return (
       <div className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden z-0">
@@ -42,7 +45,7 @@ const ContactInfo: FC = () => {
               <span className="tracking-tight">Mensajes con el vendedor</span>
             </h3>
             <div className="font-semibold mt-1 text-sm">
-              <span className="">CELECTROMIAMI123</span>
+              <span className="">{sellerName}</span>
             </div>
           </div>
           <Link

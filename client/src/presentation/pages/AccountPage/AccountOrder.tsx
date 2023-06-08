@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,10 +7,11 @@ import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 
 import { fetchUserPurchases } from "adapters/store/userPurchases";
+import { setSelectedPurchase, clearSelectedPurchase } from "adapters/store/purchase";
 import Prices from "presentation/components/Prices";
 import ButtonSecondary from "presentation/shared/Button/ButtonSecondary";
 import CommonLayout from "./CommonLayout";
-import { UserPurchaseModel } from "adapters/services/userPurchases/model/userPurchases.model";
+import { UserPurchaseResponse } from "adapters/services/userPurchases/model/userPurchases.model";
 import { authManager } from "infrastructure/utils/auth.utils";
 import Pagination from "presentation/shared/Pagination/Pagination";
 import Spinner from "presentation/shared/Spinner/Spinner";
@@ -24,12 +25,12 @@ const AccountOrder: FC<AccountOrderProps> = () => {
 
   const limit = 3;
   const user = useSelector((state: RootState) => state.user);
-  const [userId, _] = React.useState(user?.id ?? 1);
+  const [userId, ] = React.useState(user?.id ?? 1);
   const [page, setPage] = React.useState(1);
   const [loading, setLoading] = React.useState(false);
   const { expireSession } = authManager();
 
-  const handlePaginationChange = (selectedPage: number) => {
+  const handlePaginationChange = async (selectedPage: number) => {
     setPage(selectedPage);
   };
 
@@ -43,13 +44,14 @@ const AccountOrder: FC<AccountOrderProps> = () => {
   const fetchData = async () => {
     setLoading(true);
     const action = await dispatch(fetchUserPurchases({ userId, limit, page }));
+    dispatch(clearSelectedPurchase());
     setLoading(false);
     if (!action.payload) {
       await logout();
     }
     isMounted.current = true;
   };
-
+  
   useEffect(() => {
     fetchData();
 
@@ -57,14 +59,24 @@ const AccountOrder: FC<AccountOrderProps> = () => {
       if (!isMounted.current) {
         fetchData();
       }
-    });
+    }, 5000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [dispatch, userId, limit, page]);
+    // eslint-disable-next-line
+  }, [dispatch, page]);
+  
 
-  const renderProductItem = (product: UserPurchaseModel, index: number) => {
+  const handleDetailClick = async (product: UserPurchaseResponse) => {
+    navigate("/detalle-compra");
+    const action = await dispatch(setSelectedPurchase(product));
+    if (!action.payload) {
+      await logout();
+    }
+  };
+
+  const renderProductItem = (product: UserPurchaseResponse, index: number) => {
     return (
       <div
         className="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden z-0"
@@ -98,11 +110,7 @@ const AccountOrder: FC<AccountOrderProps> = () => {
               />
             </div>
 
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                navigate("/detalle-compra");
-              }}
+            <div
               className="ml-4 flex flex-1 flex-col"
             >
               <div>
@@ -133,12 +141,13 @@ const AccountOrder: FC<AccountOrderProps> = () => {
                   <ButtonSecondary
                     sizeClass="py-2.5 px-4 sm:px-6"
                     fontSize="text-sm font-medium"
+                    onClick={() => handleDetailClick(product)}
                   >
                     Detalle de compra
                   </ButtonSecondary>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

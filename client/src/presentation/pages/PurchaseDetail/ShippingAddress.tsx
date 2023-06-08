@@ -1,6 +1,12 @@
 import React, { FC } from "react";
 
-const ShippingAddress: FC = () => {
+interface ShippingAddressProps {
+  arrivalDate?: string;
+}
+
+const ShippingAddress: FC<ShippingAddressProps> = ({
+  arrivalDate = "Llegó el 7 de marzo",
+}) => {
   const renderShippingAddress = () => {
     return (
       <div className="border border-slate-200 dark:border-slate-700 rounded-xl ">
@@ -52,7 +58,7 @@ const ShippingAddress: FC = () => {
 
           <div className="sm:ml-8">
             <h3 className=" text-slate-700 dark:text-slate-300 flex ">
-              <span>Llegó el 7 de marzo</span>
+              <span>{arrivalDate}</span>
             </h3>
             <div className="font-semibold mt-1 text-sm">
               <span className="">
@@ -69,6 +75,7 @@ const ShippingAddress: FC = () => {
       </div>
     );
   };
+
   return renderShippingAddress();
 };
 

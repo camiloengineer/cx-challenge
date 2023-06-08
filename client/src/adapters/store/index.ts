@@ -4,6 +4,7 @@ import { combineReducers, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
 import userReducer from "./user";
 import userPurchasesReducer from "./userPurchases";
+import selectedPurchaseSlice from "./purchase";
 
 declare global {
   interface Window {
@@ -14,6 +15,7 @@ declare global {
 const rootReducer = combineReducers({
   user: userReducer,
   userPurchases: userPurchasesReducer,
+  selectedPurchase: selectedPurchaseSlice,
 });
 
 const middleware = [thunkMiddleware];
