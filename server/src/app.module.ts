@@ -1,4 +1,3 @@
-
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
@@ -13,13 +12,13 @@ import { ResolverModule } from './resolvers/resolver.module';
     PassportModule,
     JwtModule.register({
       secret: SECRET_KEY,
-      signOptions: { expiresIn: '10h' }, 
+      signOptions: { expiresIn: '10h' },
     }),
     ResolverModule,
     GraphQLModule.forRoot({
-      driver: ApolloDriver, 
+      driver: ApolloDriver,
       autoSchemaFile: 'schema.gql',
-    })
+    }),
   ],
 })
 export class AppModule {}

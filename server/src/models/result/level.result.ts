@@ -1,4 +1,4 @@
 export interface ILevelDetailResult {
-    levelId: string;
-    description: string;
-  }
+  levelId: string;
+  description: string;
+}

@@ -11,7 +11,10 @@ import { AuthGuard } from 'src/guards/auth.guard';
 export class UserPurchasesResolver {
   constructor(private readonly userPurchasesService: UserPurchasesService) {}
 
-  @Query(_ => UserPurchases, { description: 'Get user purchases', nullable: true })
+  @Query(() => UserPurchases, {
+    description: 'Get user purchases',
+    nullable: true,
+  })
   @UseGuards(new AuthGuard())
   async userPurchases(
     @Args('userId', { type: () => Int }) userId: number,
@@ -19,7 +22,11 @@ export class UserPurchasesResolver {
     @Args('page', { type: () => Int, defaultValue: 1 }) page: number,
   ) {
     try {
-      const response = await this.userPurchasesService.getUserPurchases(userId, limit, page);
+      const response = await this.userPurchasesService.getUserPurchases(
+        userId,
+        limit,
+        page,
+      );
 
       return response;
     } catch (err) {
@@ -28,11 +35,12 @@ export class UserPurchasesResolver {
     }
   }
 
-  @Query( _ => Shipment, { description: 'Get shipment detail', nullable: true })
+  @Query(() => Shipment, {
+    description: 'Get shipment detail',
+    nullable: true,
+  })
   @UseGuards(new AuthGuard())
-  async shipment(
-    @Args('shipmentId', { type: () => Int }) shipmentId: number,
-  ) {
+  async shipment(@Args('shipmentId', { type: () => Int }) shipmentId: number) {
     try {
       const response = await this.userPurchasesService.getShipment(shipmentId);
 
@@ -43,13 +51,15 @@ export class UserPurchasesResolver {
     }
   }
 
-  @Query(_ => Payment, { description: 'Get payment detail', nullable: true })
+  @Query(() => Payment, { description: 'Get payment detail', nullable: true })
   @UseGuards(new AuthGuard())
   async payment(
     @Args('transactionId', { type: () => Int }) transactionId: number,
   ) {
     try {
-      const response = await this.userPurchasesService.getPayment(transactionId);
+      const response = await this.userPurchasesService.getPayment(
+        transactionId,
+      );
 
       return response;
     } catch (err) {

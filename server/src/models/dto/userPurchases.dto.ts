@@ -1,6 +1,3 @@
-import { IPaymentDto } from "./payment.dto";
-import { IShipmentDto } from "./shipment.dto";
-
 interface IPurchaseCostDto {
   total: number;
   currency: string;
@@ -24,9 +21,8 @@ export interface IUserPurchaseDto {
 }
 
 export interface IUserPurchasesDto {
-    total: number;
-    offset: number;
-    limit: number;
-    data: IUserPurchaseDto[];
-  }
-  
+  total: number;
+  offset: number;
+  limit: number;
+  data: IUserPurchaseDto[];
+}

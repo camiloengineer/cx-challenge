@@ -13,7 +13,8 @@ export class UserProvider {
     try {
       const result: IUserDto = await this.mercadoLibreService.getUser();
       //Encrypted Password
-      result.password = "$2b$10$VaL9mdS6DLWOfLTt.giwU.Kw2J3ivkEbBFniQNQPxHck3S7NSvvxS" 
+      result.password =
+        '$2b$10$VaL9mdS6DLWOfLTt.giwU.Kw2J3ivkEbBFniQNQPxHck3S7NSvvxS';
       return result;
     } catch (err) {
       console.error(`Error retrieving user: ${err}`, { err });
@@ -21,9 +22,12 @@ export class UserProvider {
     }
   }
 
-  async getUserRestrictionsQuery(userId: number): Promise<IUserRestrictionsDto> {
+  async getUserRestrictionsQuery(
+    userId: number,
+  ): Promise<IUserRestrictionsDto> {
     try {
-      const result: IUserRestrictionsDto = await this.mercadoLibreService.getUserRestrictions(userId);
+      const result: IUserRestrictionsDto =
+        await this.mercadoLibreService.getUserRestrictions(userId);
       return result;
     } catch (err) {
       console.error(`Error retrieving user: ${err}`, { err });
@@ -33,7 +37,9 @@ export class UserProvider {
 
   async getLevelQuery(levelId: string): Promise<ILevelDetailDto> {
     try {
-      const result: ILevelDetailDto = await this.mercadoLibreService.getLevel(levelId);
+      const result: ILevelDetailDto = await this.mercadoLibreService.getLevel(
+        levelId,
+      );
       return result;
     } catch (err) {
       console.error(`Error retrieving user: ${err}`, { err });

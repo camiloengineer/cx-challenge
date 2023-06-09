@@ -41,6 +41,7 @@ const DiscoverMoreSlider = () => {
   const UNIQUE_CLASS = "glidejs" + id.replace(/:/g, "_");
 
   useEffect(() => {
+    // eslint-disable-next-line
     // @ts-ignore
     const OPTIONS: Glide.Options = {
       perView: 2.8,
@@ -70,6 +71,7 @@ const DiscoverMoreSlider = () => {
       },
     };
 
+    // eslint-disable-next-line
     let slider = new Glide(`.${UNIQUE_CLASS}`, OPTIONS);
     slider.mount();
     return () => {

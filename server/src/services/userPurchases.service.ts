@@ -20,12 +20,12 @@ export class UserPurchasesService {
     page = 1,
   ): Promise<IUserPurchasesResult> {
     try {
-      let userPurchases: IUserPurchasesDto =
-      await this.userPurchasesProvider.getUserPurchasesQuery(
-        userId,
-        limit,
-        page,
-      );
+      const userPurchases: IUserPurchasesDto =
+        await this.userPurchasesProvider.getUserPurchasesQuery(
+          userId,
+          limit,
+          page,
+        );
 
       const response = this.mapper.mapGetUserPurchases(userPurchases);
 
@@ -38,10 +38,12 @@ export class UserPurchasesService {
 
   async getShipment(shipmentId: number): Promise<IShipmentResult> {
     try {
-      const shipment = await this.userPurchasesProvider.getShipmentQuery(shipmentId);
-      
+      const shipment = await this.userPurchasesProvider.getShipmentQuery(
+        shipmentId,
+      );
+
       const response = this.mapper.mapGetShipment(shipment);
-  
+
       return response;
     } catch (err) {
       console.error(`Error retrieving shipment detail: ${err}`, { err });
@@ -51,10 +53,12 @@ export class UserPurchasesService {
 
   async getPayment(transactionId: number): Promise<IPaymentResult> {
     try {
-      const payment = await this.userPurchasesProvider.getPaymentQuery(transactionId);
-  
+      const payment = await this.userPurchasesProvider.getPaymentQuery(
+        transactionId,
+      );
+
       const response = this.mapper.mapGetPayment(payment);
-  
+
       return response;
     } catch (err) {
       console.error(`Error retrieving payment detail: ${err}`, { err });

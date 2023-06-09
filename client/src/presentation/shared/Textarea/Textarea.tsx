@@ -3,6 +3,7 @@ import React, { TextareaHTMLAttributes } from "react";
 export interface TextareaProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
+// eslint-disable-next-line
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className = "", children, rows = 4, ...args }, ref) => {
     return (

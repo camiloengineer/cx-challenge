@@ -1,4 +1,4 @@
-import { Module} from '@nestjs/common';
+import { Module } from '@nestjs/common';
 
 import { UserResolver } from './user.resolver';
 import { UserPurchasesResolver } from './userPurchases.resolver';
@@ -10,7 +10,15 @@ import { AutoMapper } from 'src/services/mappings/mapper.service';
 import { default as MercadoLibreService } from '../../cx-frontend-challenge/MercadolibreService';
 
 @Module({
-    providers: [UserResolver, UserPurchasesResolver, UserProvider, UserPurchasesProvider, UserService, UserPurchasesService, MercadoLibreService, AutoMapper]
+  providers: [
+    UserResolver,
+    UserPurchasesResolver,
+    UserProvider,
+    UserPurchasesProvider,
+    UserService,
+    UserPurchasesService,
+    MercadoLibreService,
+    AutoMapper,
+  ],
 })
-
 export class ResolverModule {}

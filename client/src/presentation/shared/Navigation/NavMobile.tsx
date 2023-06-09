@@ -150,8 +150,6 @@ const NavMobile: React.FC<NavMobileProps> = ({
   const renderSearchForm = () => {
     return (
       <form
-        action=""
-        method="POST"
         className="flex-1 text-slate-900 dark:text-slate-200"
       >
         <div className="bg-slate-50 dark:bg-slate-800 flex items-center space-x-1 py-2 px-4 rounded-xl h-full">

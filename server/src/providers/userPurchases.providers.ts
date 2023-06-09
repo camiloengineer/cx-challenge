@@ -27,7 +27,9 @@ export class UserPurchasesProvider {
 
   async getShipmentQuery(shipmentId: number): Promise<IShipmentDto> {
     try {
-      const result: IShipmentDto = await this.mercadoLibreService.getShipment(shipmentId);
+      const result: IShipmentDto = await this.mercadoLibreService.getShipment(
+        shipmentId,
+      );
       return result;
     } catch (err) {
       console.error(`Error retrieving shipment: ${err}`, { err });
@@ -37,7 +39,9 @@ export class UserPurchasesProvider {
 
   async getPaymentQuery(transactionId: number): Promise<IPaymentDto> {
     try {
-      const result: IPaymentDto = await this.mercadoLibreService.getPayment(transactionId);
+      const result: IPaymentDto = await this.mercadoLibreService.getPayment(
+        transactionId,
+      );
       return result;
     } catch (err) {
       console.error(`Error retrieving payment: ${err}`, { err });

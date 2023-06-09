@@ -38,6 +38,7 @@ export const pages: Page[] = [
   },
 ];
 
+// eslint-disable-next-line
 interface PrivateRouteProps<T = {}> {
   element: React.ComponentType<T>;
   isPrivate: boolean;

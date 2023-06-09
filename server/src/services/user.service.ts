@@ -11,19 +11,28 @@ import { IUserResult } from 'src/models/result/user.result';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userProvider: UserProvider,
-    private readonly mapper: AutoMapper) {}
+  constructor(
+    private readonly userProvider: UserProvider,
+    private readonly mapper: AutoMapper,
+  ) {}
 
   async GetUser(): Promise<IUserResult> {
     try {
       const user: IUserDto = await this.userProvider.getUserQuery();
-      const promises: [Promise<IUserRestrictionsDto>, Promise<ILevelDetailDto>] = [
+      const promises: [
+        Promise<IUserRestrictionsDto>,
+        Promise<ILevelDetailDto>,
+      ] = [
         this.userProvider.getUserRestrictionsQuery(user.user_id),
         this.userProvider.getLevelQuery(user.level),
       ];
       const [userRestrictions, levelDetail] = await Promise.all(promises);
 
-      const response = this.mapper.mapGetUser(user, userRestrictions, levelDetail);
+      const response = this.mapper.mapGetUser(
+        user,
+        userRestrictions,
+        levelDetail,
+      );
 
       return response;
     } catch (err) {
@@ -48,7 +57,9 @@ export class UserService {
   async generateAuthToken(user: IUserResult): Promise<string> {
     const { id, name, surname, level } = user;
 
-    const token = jwt.sign({ id, name, surname, level }, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ id, name, surname, level }, SECRET_KEY, {
+      expiresIn: '1h',
+    });
 
     return token;
   }

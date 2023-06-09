@@ -1,3 +1,4 @@
+import React from "react";
 import { Popover } from "@headlessui/react";
 
 export default function CartDropdown() {
