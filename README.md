@@ -12,7 +12,7 @@ git clone https://github.com/camiloengineer/cx-challenge.git
 
 ### Pre-requisitos 📋
 
-_Para ejecutar este proyecto en tu máquina local, necesitarás tener instalado [Git](https://git-scm.com/) y [Nodejs](https://nodejs.org/es/download/)_
+_Para ejecutar este proyecto en tu máquina local, necesitarás tener instalado [Git](https://git-scm.com/) y [Nodejs](https://nodejs.org/es/download/). El proyecto ha sido probado con la última versión estable de Node.js (v18.16.0)._
 
 ### Frontend 🖥️
 

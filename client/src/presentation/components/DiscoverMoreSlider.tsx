@@ -12,25 +12,25 @@ import Glide from "@glidejs/glide";
 export const CATS_DISCOVER: CardCategory2Props[] = [
   {
     name: "Explorar novedades",
-    desc: "Compra lo último <br /> de las mejores marcas",
+    desc: "Compra ropa de <br /> las mejores marcas",
     featuredImage: img1,
     color: "bg-yellow-50",
   },
   {
     name: "Tarjetas de regalo digitales",
-    desc: "Regala la opción <br /> de elección",
+    desc: "Regala diversion <br /> a tus hijos",
     featuredImage: img2,
     color: "bg-red-50",
   },
   {
     name: "Colección en oferta",
-    desc: "Hasta <br /> 80% de descuento <br /> en retail",
+    desc: "Hasta <br /> 80% de descuento <br /> en mascotas",
     featuredImage: img3,
     color: "bg-blue-50",
   },
   {
     name: "Colección en oferta",
-    desc: "Hasta <br /> 80% de descuento <br /> en retail",
+    desc: "Hasta <br /> 80% de descuento <br /> en perfumes",
     featuredImage: img4,
     color: "bg-green-50",
   },

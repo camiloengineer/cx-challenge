@@ -108,7 +108,6 @@ const Header: FC<HeaderProps> = ({ onAuthToggle, showLogin }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/");
         }}
         className="flex-1 py-2 text-slate-900 dark:text-slate-100"
       >

@@ -5,7 +5,6 @@ export interface SwitchDarkMode2Props {
   className?: string;
 }
 const SwitchDarkMode2: React.FC<SwitchDarkMode2Props> = ({
-  className = "",
 }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 

@@ -4,6 +4,7 @@ import NextPrev from "presentation/shared/NextPrev/NextPrev";
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   fontClass?: string;
   rightDescText?: ReactNode;
+  // eslint-disable-next-line
   rightPopoverOptions?: typeof solutions;
   desc?: ReactNode;
   hasNextPrev?: boolean;
@@ -20,6 +21,7 @@ const Heading: React.FC<HeadingProps> = ({
   hasNextPrev = false,
   fontClass = "text-3xl md:text-4xl font-semibold",
   rightDescText,
+  // eslint-disable-next-line
   rightPopoverOptions = solutions,
   ...args
 }) => {

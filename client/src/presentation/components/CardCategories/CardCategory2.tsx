@@ -20,11 +20,17 @@ const CardCategory2: FC<CardCategory2Props> = ({
   desc = CATS_DISCOVER[2].desc,
   color = CATS_DISCOVER[2].color,
 }) => {
+
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <Link
       to={"/"}
       className={`nc-CardCategory3 block ${className}`}
       data-nc-id="CardCategory3"
+      onClick={handleLinkClick}
     >
       <div
         className={`relative w-full aspect-w-16 aspect-h-11 sm:aspect-h-9 h-0 rounded-2xl overflow-hidden group ${color}`}

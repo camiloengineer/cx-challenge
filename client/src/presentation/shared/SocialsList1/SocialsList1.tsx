@@ -17,12 +17,18 @@ const socials: SocialType[] = [
 ];
 
 const SocialsList1: FC<SocialsList1Props> = ({ className = "space-y-3" }) => {
+
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+  };
+
   const renderItem = (item: SocialType, index: number) => {
     return (
       <a
         href={item.href}
         className="flex items-center text-2xl text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
         key={index}
+        onClick={handleLinkClick}
       >
         <div className="flex-shrink-0 w-5 ">
           <img src={item.icon} alt="" />

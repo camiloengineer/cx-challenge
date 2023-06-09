@@ -9,50 +9,57 @@ export interface WidgetFooterMenu {
   menus: CustomLink[];
 }
 
+const currentPath = "/";
+
 const widgetMenus: WidgetFooterMenu[] = [
   {
     id: "5",
     title: "Acerca de",
     menus: [
-      { href: "/", label: "Mercado Libre" },
-      { href: "/", label: "Investor relations" },
-      { href: "/", label: "Tendencias" },
-      { href: "/", label: "Sustentabilidad" },
+      { href: currentPath, label: "Mercado Libre" },
+      { href: currentPath, label: "Investor relations" },
+      { href: currentPath, label: "Tendencias" },
+      { href: currentPath, label: "Sustentabilidad" },
     ],
   },
   {
     id: "1",
     title: "Otros sitios",
     menus: [
-      { href: "/", label: "Developers" },
-      { href: "/", label: "Mercado Pago" },
-      { href: "/", label: "Mercado Shops" },
-      { href: "/", label: "Mercado Envíos" },
+      { href: currentPath, label: "Developers" },
+      { href: currentPath, label: "Mercado Pago" },
+      { href: currentPath, label: "Mercado Shops" },
+      { href: currentPath, label: "Mercado Envíos" },
     ],
   },
   {
     id: "2",
     title: "Ayuda",
     menus: [
-      { href: "/", label: "Comprar" },
-      { href: "/", label: "Vender" },
-      { href: "/", label: "Resolución de problemas" },
-      { href: "/", label: "Centro de Seguridad" },
+      { href: currentPath, label: "Comprar" },
+      { href: currentPath, label: "Vender" },
+      { href: currentPath, label: "Resolución de problemas" },
+      { href: currentPath, label: "Centro de Seguridad" },
     ],
   },
   {
     id: "4",
     title: "Redes sociales",
     menus: [
-      { href: "/", label: "Facebook" },
-      { href: "/", label: "Youtube" },
-      { href: "/", label: "Telegram" },
-      { href: "/", label: "Twitter" },
+      { href: currentPath, label: "Facebook" },
+      { href: currentPath, label: "Youtube" },
+      { href: currentPath, label: "Telegram" },
+      { href: currentPath, label: "Twitter" },
     ],
   },
 ];
 
 const Footer: React.FC = () => {
+
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+  };
+
   const renderWidgetMenuItem = (menu: WidgetFooterMenu, index: number) => {
     return (
       <div key={index} className="text-sm">
@@ -66,8 +73,8 @@ const Footer: React.FC = () => {
                 key={index}
                 className="text-neutral-6000 dark:text-neutral-300 hover:text-black dark:hover:text-white"
                 href={item.href}
-                target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleLinkClick}
               >
                 {item.label}
               </a>

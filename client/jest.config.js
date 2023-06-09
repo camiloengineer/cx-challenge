@@ -8,6 +8,7 @@ module.exports = {
     transform: {
       '^.+\\.(ts|tsx)$': 'ts-jest'
     },
-    setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts']
+    setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+    silent: true
   };
   

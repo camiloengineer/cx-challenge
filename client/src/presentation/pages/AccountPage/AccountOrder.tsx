@@ -91,7 +91,7 @@ const AccountOrder: FC<AccountOrderProps> = () => {
           <div>
             <p className="text-lg font-semibold">{product.date}</p>
             <p className="text-slate-500 dark:text-slate-400 text-sm mt-1.5 sm:mt-2">
-              <span>Pedido: {product.transactionId}</span>
+              <span>Pedido: {product.purchaseId}</span>
               <span className="mx-2">·</span>
               <span className="capitalize text-green-600">entregado</span>
             </p>

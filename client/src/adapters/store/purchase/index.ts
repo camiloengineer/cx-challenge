@@ -37,7 +37,7 @@ const selectedPurchaseSlice = createSlice({
   name: 'selectedPurchase',
   initialState: {} as SelectedPurchaseResponse,
   reducers: {
-    clearSelectedPurchase: (state) => {
+    clearSelectedPurchase: () => {
       return {} as SelectedPurchaseResponse;
     },
   },
