@@ -1,6 +1,6 @@
-# Challenge Técnico Mercadolibre Front-End
+# Challenge Técnico MercadoLibre Front-End
 
-_Este es un proyecto Full-Stack que replica un sitio de compras, específicamente Mercado Libre. Permite listar la información del usuario, visualizar sus compras y los detalles de cada una. Los datos se consumen a través del backend desde el mock entregado en el proyecto de referencia y se representan en el frontend. Además, integra un sistema de autenticación, que pasa las credenciales internamente al levantar los proyectos, protegiendo tanto las rutas del front-end como los endpoints del backend._
+_Este es un proyecto Full-Stack que replica la funcionalidad de un sitio de compras, similar a Mercado Libre. Permite mostrar información del usuario, visualizar las compras realizadas y acceder a los detalles de cada una. Los datos se consumen a través del backend desde un mock proporcionado en el proyecto de referencia y se representan en el frontend. El frontend cuenta con credenciales internas para un inicio rápido de sesión y una experiencia de usuario fluida, evitando la necesidad de realizar un proceso de inicio de sesión completo._
 
 ## Comenzando 🚀
 
@@ -12,21 +12,21 @@ git clone https://github.com/camiloengineer/cx-challenge.git
 
 ### Pre-requisitos 📋
 
-_Para ejecutar este proyecto en tu máquina local, necesitas tener instalado [Git](https://git-scm.com/) y [Nodejs](https://nodejs.org/es/download/)_
+_Para ejecutar este proyecto en tu máquina local, necesitarás tener instalado [Git](https://git-scm.com/) y [Nodejs](https://nodejs.org/es/download/)_
 
 ### Frontend 🖥️
 
-_El frontend está construido en Typescript con React y utiliza Tailwind y PostCSS, y sigue un enfoque mobile first y teniendo en cuenta UX/UI. La aplicación usa "Lazy Loading" para optimizar la carga, y admite modos claro y oscuro. Storybook para el desarrollo aislado de componentes UI, Redux para el manejo del estado, y un cliente Apollo para consumir APIs GraphQL. El proyecto cuenta con pruebas unitarias, una arquitectura hexagonal para separar las responsabilidades del código, y utiliza ESLint para la calidad del código._
+_El frontend se construye en Typescript y React, utilizando Tailwind y PostCSS. Se enfoca en mobile first y se presta especial atención a UX/UI. La aplicación emplea "Lazy Loading" para una carga optimizada y ofrece modos claro y oscuro. Se utiliza Storybook para el desarrollo de componentes UI, Redux para el manejo del estado y Apollo Client para consumir APIs GraphQL. El proyecto incluye pruebas unitarias y sigue una arquitectura hexagonal para una mejor organización del código. Además, se aplica ESLint para garantizar la calidad del código._
 
 ### Backend 🖥️
 
-_El backend está hecho en NestJS con Typescript y utiliza JSON Web Tokens para la autenticación y GraphQL para las consultas de datos. Los endpoints están protegidos con guards, y utiliza ESLint para la calidad del código._
+_El backend se desarrolla en NestJS utilizando Typescript y emplea JSON Web Tokens (JWT) para la autenticación. Se utiliza GraphQL para las consultas de datos, y los endpoints se protegen mediante guards. Además, se utiliza ESLint para garantizar la calidad del código. La estructura del proyecto está diseñada de manera escalable y flexible, con una gestión de credenciales que incluye la comparación de contraseñas encriptadas y la emisión de tokens de acceso (bearer tokens) para consultas futuras. También se tiene en cuenta la gestión de claves para distintos entornos de despliegue y se aplica una expiración del token._
 
 ## Instalación y ejecución 🔧
 
-_Sigue estos pasos para instalar y ejecutar el proyecto correctamente:_
+_igue los siguientes pasos para instalar y ejecutar el proyecto correctamente:_
 
-**Paso 1: Backend**
+**Paso 1: Server**
 
 _Levanta primero el servidor para asegurar que el front pueda consumir los datos correctamente._
 
@@ -36,7 +36,7 @@ yarn install
 yarn start:dev
 ```
 
-**Paso 2: Frontend**
+**Paso 2: Client**
 
 _Ahora que el backend está funcionando, puedes iniciar el frontend._
 
