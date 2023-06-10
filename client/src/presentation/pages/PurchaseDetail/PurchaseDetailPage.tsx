@@ -4,12 +4,12 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { RootState } from "adapters/store";
 
-import Prices from "presentation/components/Prices";
+import Prices from "presentation/sections/Prices";
 import ContactInfo from "./ContactInfo";
 import PaymentMethod from "./PaymentMethod";
 import ShippingAddress from "./ShippingAddress";
-import ButtonPrimary from "presentation/shared/Button/ButtonPrimary";
-import Spinner from "presentation/shared/Spinner/Spinner";
+import ButtonPrimary from "presentation/components/Button/ButtonPrimary";
+import Spinner from "presentation/components/Spinner/Spinner";
 import { formatPrice } from "infrastructure/utils/currency.utils";
 
 const PurchaseDetailPage = () => {
@@ -102,13 +102,13 @@ const PurchaseDetailPage = () => {
   return (
     <div className="nc-PurchaseDetailPage">
       <Helmet>
-        <title>Detalle compra</title>
+        <title>Detalle de compra</title>
       </Helmet>
 
       <main className="container py-16 lg:pb-28 lg:pt-20 ">
         <div className="mb-16">
           <h2 className="block text-2xl sm:text-3xl lg:text-4xl font-semibold ">
-            Detalle compra
+            Detalle de compra
           </h2>
           <div className="block mt-3 sm:mt-5 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-400">
             <Link to={"/"} className="">
@@ -119,12 +119,12 @@ const PurchaseDetailPage = () => {
               Mis compras
             </Link>
             <span className="text-xs mx-1 sm:mx-1.5">/</span>
-            <span className="underline">Detalle compra</span>
+            <span className="underline">Detalle de compra</span>
           </div>
         </div>
 
         {Object.keys(product).length === 0 ? (
-          <Spinner text="Cargando compra..." />
+          <Spinner text="Cargando detalle de compra..." />
         ) : (
           <div className="flex flex-col lg:flex-row">
             <div className="flex-1">{renderLeft()}</div>
@@ -132,7 +132,7 @@ const PurchaseDetailPage = () => {
             <div className="flex-shrink-0 border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-slate-700 my-10 lg:my-0 lg:mx-10 xl:lg:mx-14 2xl:mx-16 "></div>
 
             <div className="w-full lg:w-[36%] ">
-              <h3 className="text-lg font-semibold">Detalle pago</h3>
+              <h3 className="text-lg font-semibold">Detalle de pago</h3>
               <div className="mt-8 divide-y divide-slate-200/70 dark:divide-slate-700 ">
                 {renderProduct()}
               </div>

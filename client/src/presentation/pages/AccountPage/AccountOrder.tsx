@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,26 +8,26 @@ import { AnyAction } from "redux";
 
 import { fetchUserPurchases } from "adapters/store/userPurchases";
 import { setSelectedPurchase, clearSelectedPurchase } from "adapters/store/purchase";
-import Prices from "presentation/components/Prices";
-import ButtonSecondary from "presentation/shared/Button/ButtonSecondary";
+import Prices from "presentation/sections/Prices";
+import ButtonSecondary from "presentation/components/Button/ButtonSecondary";
 import CommonLayout from "./CommonLayout";
 import { UserPurchaseResponse } from "adapters/services/userPurchases/model/userPurchases.model";
 import { authManager } from "infrastructure/utils/auth.utils";
-import Pagination from "presentation/shared/Pagination/Pagination";
-import Spinner from "presentation/shared/Spinner/Spinner";
+import Pagination from "presentation/components/Pagination/Pagination";
+import Spinner from "presentation/components/Spinner/Spinner";
 
 interface AccountOrderProps {}
 
 const AccountOrder: FC<AccountOrderProps> = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
-  const isMounted = React.useRef(false);
+  const isMounted = useRef(false);
 
   const limit = 3;
   const user = useSelector((state: RootState) => state.user);
-  const [userId, ] = React.useState(user?.id ?? 1);
-  const [page, setPage] = React.useState(1);
-  const [loading, setLoading] = React.useState(false);
+  const [userId, ] = useState(user?.id ?? 1);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   const { expireSession } = authManager();
 
   const handlePaginationChange = async (selectedPage: number) => {
@@ -176,7 +176,7 @@ const AccountOrder: FC<AccountOrderProps> = () => {
         <div className="space-y-10 sm:space-y-12">
           <h2 className="text-2xl sm:text-3xl font-semibold">Mis compras</h2>
           {loading ? (
-            <Spinner text="Cargando productos..." />
+            <Spinner text="Cargando mis compras..." />
           ) : (
             userPurchases?.data?.map(renderProductItem)
           )}

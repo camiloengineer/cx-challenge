@@ -1,9 +1,9 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { ComponentType, FC, lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Page } from "./types";
 import ScrollToTop from "./ScrollToTop";
-import Footer from "presentation/shared/Footer/Footer";
-import Header from "presentation/components/Header/Header";
+import Footer from "presentation/components/Footer/Footer";
+import Header from "presentation/sections/Header/Header";
 import { authManager } from "infrastructure/utils/auth.utils";
 
 export const pages: Page[] = [
@@ -40,13 +40,13 @@ export const pages: Page[] = [
 
 // eslint-disable-next-line
 interface PrivateRouteProps<T = {}> {
-  element: React.ComponentType<T>;
+  element: ComponentType<T>;
   isPrivate: boolean;
   onAuthToggle: () => Promise<boolean>;
   showLogin: boolean;
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps<any>> = ({
+const PrivateRoute: FC<PrivateRouteProps<any>> = ({
   element: Element,
   isPrivate,
   onAuthToggle,

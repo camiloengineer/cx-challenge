@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import ButtonSecondary from '../presentation/shared/Button/ButtonSecondary';
+import ButtonSecondary from '../presentation/components/Button/ButtonSecondary';
 import '../presentation/css/bundle.css'
 
 const meta: Meta<typeof ButtonSecondary> = {

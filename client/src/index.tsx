@@ -1,4 +1,4 @@
-import React from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from 'react-redux';
 import { toolkitStore } from './adapters/store';
@@ -12,9 +12,9 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={toolkitStore}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </StrictMode>
 );

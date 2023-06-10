@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import { Helmet } from "react-helmet-async";
 
-import ButtonPrimary from "presentation/shared/Button/ButtonPrimary";
-import NcImage from "presentation/shared/NcImage/NcImage";
+import ButtonPrimary from "presentation/components/Button/ButtonPrimary";
+import NcImage from "presentation/components/NcImage/NcImage";
 import I404Png from "presentation/images/404.png";
 
-const Page404: React.FC = () => (
+const Page404: FC = () => (
   <div className="nc-Page404">
     <Helmet>
       <title>Página no encontrada</title>

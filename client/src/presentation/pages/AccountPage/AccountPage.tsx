@@ -3,11 +3,11 @@ import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
 import { RootState } from "adapters/store";
 
-import Label from "presentation/components/Label/Label";
-import ButtonPrimary from "presentation/shared/Button/ButtonPrimary";
-import Input from "presentation/shared/Input/Input";
-import Select from "presentation/shared/Select/Select";
-import Textarea from "presentation/shared/Textarea/Textarea";
+import Label from "presentation/sections/Label/Label";
+import ButtonPrimary from "presentation/components/Button/ButtonPrimary";
+import Input from "presentation/components/Input/Input";
+import Select from "presentation/components/Select/Select";
+import Textarea from "presentation/components/Textarea/Textarea";
 import CommonLayout from "./CommonLayout";
 
 export interface AccountPageProps {

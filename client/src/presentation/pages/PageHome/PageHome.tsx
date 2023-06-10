@@ -1,11 +1,11 @@
 import React, {FC, useEffect} from "react";
 
-import BackgroundSection from "presentation/components/BackgroundSection/BackgroundSection";
-import SectionHero from "presentation/components/SectionHero/SectionHero";
-import DiscoverMoreSlider from "presentation/components/DiscoverMoreSlider";
-import SectionGridMoreExplore from "presentation/components/SectionGridMoreExplore/SectionGridMoreExplore";
-import SectionPromo from "presentation/components/SectionPromo";
-import SectionSliderCategories from "presentation/components/SectionSliderCategories/SectionSliderCategories";
+import BackgroundSection from "presentation/sections/BackgroundSection/BackgroundSection";
+import SectionHero from "presentation/sections/SectionHero/SectionHero";
+import DiscoverMoreSlider from "presentation/sections/DiscoverMoreSlider";
+import SectionGridMoreExplore from "presentation/sections/SectionGridMoreExplore/SectionGridMoreExplore";
+import SectionPromo from "presentation/sections/SectionPromo";
+import SectionSliderCategories from "presentation/sections/SectionSliderCategories/SectionSliderCategories";
 import { authManager } from "infrastructure/utils/auth.utils";
 
 export interface PageHomeProps {

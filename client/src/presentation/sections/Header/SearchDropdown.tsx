@@ -1,14 +1,18 @@
-import React, { Fragment, createRef } from "react";
-
+import React, { FC, Fragment, createRef } from "react";
 import { Popover, Transition } from "@headlessui/react";
+
 import Input from "presentation/components/Input/Input";
 
-const SearchDropdown = () => {
+interface Props {
+  className?: string;
+}
+
+const SearchDropdown: FC<Props> = ({ className = "" }) => {
   const inputRef = createRef<HTMLInputElement>();
 
   return (
     <Fragment>
-      <Popover className="relative">
+      <Popover className={`relative ${className}`}>
         {({ open }) => {
           if (open) {
             setTimeout(() => {
@@ -18,8 +22,29 @@ const SearchDropdown = () => {
 
           return (
             <>
-              <Popover.Button className="text-2xl md:text-[28px] w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center">
-                <i className="las la-search"></i>
+              <Popover.Button className="w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center">
+                <svg
+                  width={22}
+                  height={22}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M22 22L20 20"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Popover.Button>
 
               <Transition
