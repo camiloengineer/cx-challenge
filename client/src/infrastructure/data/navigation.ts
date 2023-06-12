@@ -1,4 +1,4 @@
-import { NavItemType } from "presentation/components/Navigation/NavigationItem";
+import { NavItemType } from "application/components/Navigation/NavigationItem";
 import ncNanoId from "infrastructure/utils/nanoid.utils";
 
 const currentPath = "/";

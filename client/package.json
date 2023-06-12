@@ -44,8 +44,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build-css": "postcss src/presentation/css/main.css -o src/presentation/css/bundle.css",
-    "watch-css": "postcss -w src/presentation/css/main.css -o src/presentation/css/bundle.css",
+    "build-css": "postcss src/application/css/main.css -o src/application/css/bundle.css",
+    "watch-css": "postcss -w src/application/css/main.css -o src/application/css/bundle.css",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint '*/**/*.{ts,tsx}' --quiet"

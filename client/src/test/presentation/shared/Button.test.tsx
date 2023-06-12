@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from '@testing-library/react';
-import Button, { ButtonProps } from 'presentation/components/Button/Button'; 
+import Button, { ButtonProps } from 'application/components/Button/Button'; 
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Button', () => {

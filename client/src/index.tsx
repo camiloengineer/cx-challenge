@@ -1,10 +1,10 @@
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from 'react-redux';
-import { toolkitStore } from './adapters/store';
+import { toolkitStore } from './application/reducers';
 import '../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss';
-import "./presentation/css/bundle.css";
-import './presentation/css/vendors/glide.scss';
+import "./application/css/bundle.css";
+import './application/css/vendors/glide.scss';
 import App from "./App";
 
 const root = ReactDOM.createRoot(

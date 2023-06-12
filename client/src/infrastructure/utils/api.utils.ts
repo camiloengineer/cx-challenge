@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
-import {API_URL} from '../config/api';
+import {API_URL} from '../config/api.config';
 
 const client = new GraphQLClient(API_URL);
 

@@ -1,4 +1,4 @@
-import { UserModelResponse } from "adapters/services/user/model/user.model";
+import { UserModelResponse } from "domain/entities/user.model";
 
 export const authManager = (): {
   isAuth: () => Promise<boolean>;

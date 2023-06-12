@@ -1,4 +1,4 @@
-import URL_SERVER from 'infrastructure/config/domains';
+import URL_SERVER from 'infrastructure/config/domain.config';
 
 describe('domains', () => {
   it('should have a valid URL_SERVER', () => {

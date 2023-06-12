@@ -1,9 +1,9 @@
 import { productImgs } from "infrastructure/config/mock/data";
-import productVariantImg2 from "presentation/images/products/v2.jpg";
-import productVariantImg3 from "presentation/images/products/v3.jpg";
-import productVariantImg4 from "presentation/images/products/v4.jpg";
-import productVariantImg5 from "presentation/images/products/v5.jpg";
-import productVariantImg6 from "presentation/images/products/v6.jpg";
+import productVariantImg2 from "application/images/products/v2.jpg";
+import productVariantImg3 from "application/images/products/v3.jpg";
+import productVariantImg4 from "application/images/products/v4.jpg";
+import productVariantImg5 from "application/images/products/v5.jpg";
+import productVariantImg6 from "application/images/products/v6.jpg";
 
 export interface ProductVariant {
   id: number;

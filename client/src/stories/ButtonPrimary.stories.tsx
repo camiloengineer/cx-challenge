@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import ButtonPrimary from '../presentation/components/Button/ButtonPrimary';
-import '../presentation/css/bundle.css'
+import ButtonPrimary from '../application/components/Button/ButtonPrimary';
+import '../application/css/bundle.css'
 
 const meta: Meta<typeof ButtonPrimary> = {
   title: 'UI Components/ButtonPrimary',

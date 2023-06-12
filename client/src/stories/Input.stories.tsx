@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import Input from '../presentation/components/Input/Input';
-import '../presentation/css/bundle.css'
+import Input from '../application/components/Input/Input';
+import '../application/css/bundle.css'
 
 const meta: Meta<typeof Input> = {
   title: 'UI Components/Input',
